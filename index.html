@@ -11,6 +11,7 @@
 <body>
 
 <header>
+
     <div class="brand">
         ⚔
         <span>CASTLE CRASHERS</span>
@@ -22,7 +23,60 @@
         <a href="#ask">Ask the archive</a>
         <a href="#gallery">Gallery</a>
     </nav>
+
+    <!-- MUSIC PLAYER -->
+    <div class="top-music-player">
+
+        <span id="music-status">
+            ♫ Four Brave Champions
+        </span>
+
+        <div class="music-controls">
+
+            <button
+                id="music-previous"
+                type="button"
+                aria-label="Previous track"
+                title="Previous track">
+                ⏮
+            </button>
+
+            <button
+                id="music-play"
+                type="button"
+                aria-label="Play music"
+                title="Play or pause">
+                ▶
+            </button>
+
+            <button
+                id="music-next"
+                type="button"
+                aria-label="Next track"
+                title="Next track">
+                ⏭
+            </button>
+
+            <button
+                id="music-loop"
+                type="button"
+                aria-label="Loop current track"
+                aria-pressed="false"
+                title="Loop current track">
+                ↻
+            </button>
+
+        </div>
+
+        <audio
+            id="music"
+            preload="auto">
+        </audio>
+
+    </div>
+
 </header>
+
 
 <main>
 
@@ -30,6 +84,7 @@
     <section class="hero">
 
         <div class="hero-copy">
+
             <p class="eyebrow">
                 THE KINGDOM'S FIELD GUIDE · UNOFFICIAL FAN PROJECT
             </p>
@@ -45,16 +100,27 @@
             </p>
 
             <div class="hero-actions">
-                <a class="button" href="#ask">Ask a question ↗</a>
-                <a class="subtle" href="#library">Explore the compendium ↓</a>
+
+                <a class="button" href="#ask">
+                    Ask a question ↗
+                </a>
+
+                <a class="subtle" href="#library">
+                    Explore the compendium ↓
+                </a>
+
             </div>
+
         </div>
+
 
         <!-- HOME IMAGE -->
         <div class="hero-art hero-photo">
+
             <img
                 src="castle_crashers_plushies.jpg"
                 alt="Castle Crashers knight plushies">
+
         </div>
 
     </section>
@@ -62,10 +128,23 @@
 
     <!-- STATS -->
     <section class="stats">
-        <span><b>4</b> player co-op</span>
-        <span><b>25+</b> characters</span>
-        <span><b>40+</b> weapons</span>
-        <span><b>1</b> very chaotic kingdom</span>
+
+        <span>
+            <b>4</b> player co-op
+        </span>
+
+        <span>
+            <b>25+</b> characters
+        </span>
+
+        <span>
+            <b>40+</b> weapons
+        </span>
+
+        <span>
+            <b>1</b> very chaotic kingdom
+        </span>
+
     </section>
 
 
@@ -75,16 +154,24 @@
         <div class="section-heading">
 
             <div>
-                <p class="eyebrow">01 / THE LIBRARY</p>
 
-                <h2>Explore the kingdom</h2>
+                <p class="eyebrow">
+                    01 / THE LIBRARY
+                </p>
+
+                <h2>
+                    Explore the kingdom
+                </h2>
 
                 <p>
                     Each entry links back to its source.
-                    Add more entries to <code>facts.json</code>
+                    Add more entries to
+                    <code>facts.json</code>
                     as your research grows.
                 </p>
+
             </div>
+
 
             <input
                 id="search"
@@ -94,17 +181,31 @@
 
         </div>
 
-        <div id="filters" class="filters"></div>
-        <div id="cards" class="cards"></div>
+
+        <div
+            id="filters"
+            class="filters">
+        </div>
+
+
+        <div
+            id="cards"
+            class="cards">
+        </div>
 
     </section>
 
 
     <!-- ASK THE ARCHIVE -->
-    <section id="ask" class="section ask-section">
+    <section
+        id="ask"
+        class="section ask-section">
 
         <div>
-            <p class="eyebrow">02 / ASK THE ARCHIVE</p>
+
+            <p class="eyebrow">
+                02 / ASK THE ARCHIVE
+            </p>
 
             <h2>
                 Ask a question.<br>
@@ -117,41 +218,54 @@
                 tell you instead of guessing.
             </p>
 
+
             <div class="prompts">
 
-                <button data-question="How many players can play?">
+                <button
+                    data-question="How many players can play?">
                     How many players can play?
                 </button>
 
-                <button data-question="What are animal orbs?">
+                <button
+                    data-question="What are animal orbs?">
                     What are animal orbs?
                 </button>
 
-                <button data-question="What is Insane Mode?">
+                <button
+                    data-question="What is Insane Mode?">
                     What is Insane Mode?
                 </button>
 
             </div>
+
         </div>
 
 
         <div class="ask-box">
 
-            <label for="question">YOUR QUESTION</label>
+            <label for="question">
+                YOUR QUESTION
+            </label>
 
             <textarea
                 id="question"
                 rows="3"
                 maxlength="300"
-                placeholder="Ask about gameplay, characters, or modes…"></textarea>
+                placeholder="Ask about gameplay, characters, or modes…">
+            </textarea>
 
-            <button id="ask-button" class="button">
+
+            <button
+                id="ask-button"
+                class="button">
                 Ask the archive →
             </button>
+
 
             <small id="answer-mode">
                 Fact sheet mode
             </small>
+
 
             <div
                 id="answer"
@@ -169,19 +283,30 @@
 
 
     <!-- GALLERY -->
-    <section id="gallery" class="section">
+    <section
+        id="gallery"
+        class="section">
 
-        <p class="eyebrow">03 / THE GALLERY</p>
+        <p class="eyebrow">
+            03 / THE GALLERY
+        </p>
 
-        <h2>Scenes from the kingdom</h2>
+        <h2>
+            Scenes from the kingdom
+        </h2>
 
         <p>
             Upload your own authorized screenshots to
-            <code>assets/images/</code> and replace the sample
-            filenames in <code>gallery.json</code>.
+            <code>assets/images/</code>
+            and replace the sample filenames in
+            <code>gallery.json</code>.
         </p>
 
-        <div id="gallery-grid" class="gallery"></div>
+
+        <div
+            id="gallery-grid"
+            class="gallery">
+        </div>
 
     </section>
 
@@ -192,39 +317,32 @@
 <footer>
 
     <div>
-        <strong>⚔ Castle Crashers Fan Compendium</strong>
+
+        <strong>
+            ⚔ Castle Crashers Fan Compendium
+        </strong>
 
         <p>
-            Unofficial fan project. Castle Crashers and its
-            characters belong to The Behemoth.
+            Unofficial fan project.
+            Castle Crashers and its characters
+            belong to The Behemoth.
         </p>
-    </div>
-
-
-    <div class="music">
-
-        <button id="music-toggle" aria-label="Play music">
-            ♫ Play music
-        </button>
-
-        <span id="music-status">
-            Add your audio file to enable music
-        </span>
-
-        <audio
-            id="music"
-            loop
-            preload="none"
-            src="assets/audio/theme.mp3">
-        </audio>
 
     </div>
 
 </footer>
 
 
-<script src="config.js" defer></script>
-<script src="app-v2.js" defer></script>
+<script
+    src="config.js"
+    defer>
+</script>
+
+<script
+    src="app-v2.js"
+    defer>
+</script>
 
 </body>
+
 </html>
