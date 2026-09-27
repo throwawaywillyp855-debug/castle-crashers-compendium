@@ -1,9 +1,230 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Castle Crashers | Fan Compendium</title><link rel="stylesheet" href="style.css"></head>
-<body><header><div class="brand">⚔ <span>CASTLE CRASHERS</span><small>FAN COMPENDIUM</small></div><nav><a href="#library">The library</a><a href="#ask">Ask the archive</a><a href="#gallery">Gallery</a></nav></header>
-<main><section class="hero"><div class="hero-copy"><p class="eyebrow">THE KINGDOM'S FIELD GUIDE · UNOFFICIAL FAN PROJECT</p><h1>Every knight has <em>a story.</em></h1><p>Explore the colorful chaos of Castle Crashers. Browse sourced game facts, search the archive, and ask questions answered from a transparent fact sheet.</p><div class="hero-actions"><a class="button" href="#ask">Ask a question ↗</a><a class="subtle" href="#library">Explore the compendium ↓</a></div></div><div class="hero-art" aria-label="Illustration of four colorful knight helmets"><div class="moon"></div><div class="knights"><div class="knight red"><i></i><b>✦</b></div><div class="knight blue"><i></i><b>✦</b></div><div class="knight orange"><i></i><b>✦</b></div><div class="knight green"><i></i><b>✦</b></div></div><div class="ground"></div></div></section>
-<section class="stats"><span><b>4</b> player co-op</span><span><b>25+</b> characters</span><span><b>40+</b> weapons</span><span><b>1</b> very chaotic kingdom</span></section>
-<section id="library" class="section"><div class="section-heading"><div><p class="eyebrow">01 / THE LIBRARY</p><h2>Explore the kingdom</h2><p>Each entry links back to its source. Add more entries to <code>facts.json</code> as your research grows.</p></div><input id="search" type="search" placeholder="Search characters, modes, items…" aria-label="Search facts"></div><div id="filters" class="filters"></div><div id="cards" class="cards"></div></section>
-<section id="ask" class="section ask-section"><div><p class="eyebrow">02 / ASK THE ARCHIVE</p><h2>Ask a question.<br><em>Get a sourced answer.</em></h2><p>Answers are drawn from the site's fact sheet. If there isn't a matching fact, the archive will tell you instead of guessing.</p><div class="prompts"><button data-question="How many players can play?">How many players can play?</button><button data-question="What are animal orbs?">What are animal orbs?</button><button data-question="What is Insane Mode?">What is Insane Mode?</button></div></div><div class="ask-box"><label for="question">YOUR QUESTION</label><textarea id="question" rows="3" maxlength="300" placeholder="Ask about gameplay, characters, or modes…"></textarea><button id="ask-button" class="button">Ask the archive →</button><small id="answer-mode">Fact sheet mode</small><div id="answer" class="answer" role="status" aria-live="polite">Your answer will appear here, with links to the facts used.</div></div></section>
-<section id="gallery" class="section"><p class="eyebrow">03 / THE GALLERY</p><h2>Scenes from the kingdom</h2><p>Upload your own authorized screenshots to <code>assets/images/</code> and replace the sample filenames in <code>gallery.json</code>.</p><div id="gallery-grid" class="gallery"></div></section></main>
-<footer><div><strong>⚔ Castle Crashers Fan Compendium</strong><p>Unofficial fan project. Castle Crashers and its characters belong to The Behemoth.</p></div><div class="music"><button id="music-toggle" aria-label="Play music">♫ Play music</button><span id="music-status">Add your audio file to enable music</span><audio id="music" loop preload="none" src="assets/audio/theme.mp3"></audio></div></footer><script src="config.js" defer></script><script src="app-v2.js" defer></script></body></html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Castle Crashers | Fan Compendium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        ⚔
+        <span>CASTLE CRASHERS</span>
+        <small>FAN COMPENDIUM</small>
+    </div>
+
+    <nav>
+        <a href="#library">The library</a>
+        <a href="#ask">Ask the archive</a>
+        <a href="#gallery">Gallery</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-copy">
+            <p class="eyebrow">
+                THE KINGDOM'S FIELD GUIDE · UNOFFICIAL FAN PROJECT
+            </p>
+
+            <h1>
+                Every knight has <em>a story.</em>
+            </h1>
+
+            <p>
+                Explore the colorful chaos of Castle Crashers.
+                Browse sourced game facts, search the archive,
+                and ask questions answered from a transparent fact sheet.
+            </p>
+
+            <div class="hero-actions">
+                <a class="button" href="#ask">Ask a question ↗</a>
+                <a class="subtle" href="#library">Explore the compendium ↓</a>
+            </div>
+        </div>
+
+        <!-- HOME IMAGE -->
+        <div class="hero-art hero-photo">
+            <img
+                src="castle_crashers_plushies.jpg"
+                alt="Castle Crashers knight plushies">
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="stats">
+        <span><b>4</b> player co-op</span>
+        <span><b>25+</b> characters</span>
+        <span><b>40+</b> weapons</span>
+        <span><b>1</b> very chaotic kingdom</span>
+    </section>
+
+
+    <!-- LIBRARY -->
+    <section id="library" class="section">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="eyebrow">01 / THE LIBRARY</p>
+
+                <h2>Explore the kingdom</h2>
+
+                <p>
+                    Each entry links back to its source.
+                    Add more entries to <code>facts.json</code>
+                    as your research grows.
+                </p>
+            </div>
+
+            <input
+                id="search"
+                type="search"
+                placeholder="Search characters, modes, items…"
+                aria-label="Search facts">
+
+        </div>
+
+        <div id="filters" class="filters"></div>
+        <div id="cards" class="cards"></div>
+
+    </section>
+
+
+    <!-- ASK THE ARCHIVE -->
+    <section id="ask" class="section ask-section">
+
+        <div>
+            <p class="eyebrow">02 / ASK THE ARCHIVE</p>
+
+            <h2>
+                Ask a question.<br>
+                <em>Get a sourced answer.</em>
+            </h2>
+
+            <p>
+                Answers are drawn from the site's fact sheet.
+                If there isn't a matching fact, the archive will
+                tell you instead of guessing.
+            </p>
+
+            <div class="prompts">
+
+                <button data-question="How many players can play?">
+                    How many players can play?
+                </button>
+
+                <button data-question="What are animal orbs?">
+                    What are animal orbs?
+                </button>
+
+                <button data-question="What is Insane Mode?">
+                    What is Insane Mode?
+                </button>
+
+            </div>
+        </div>
+
+
+        <div class="ask-box">
+
+            <label for="question">YOUR QUESTION</label>
+
+            <textarea
+                id="question"
+                rows="3"
+                maxlength="300"
+                placeholder="Ask about gameplay, characters, or modes…"></textarea>
+
+            <button id="ask-button" class="button">
+                Ask the archive →
+            </button>
+
+            <small id="answer-mode">
+                Fact sheet mode
+            </small>
+
+            <div
+                id="answer"
+                class="answer"
+                role="status"
+                aria-live="polite">
+
+                Your answer will appear here, with links to the facts used.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+
+        <p class="eyebrow">03 / THE GALLERY</p>
+
+        <h2>Scenes from the kingdom</h2>
+
+        <p>
+            Upload your own authorized screenshots to
+            <code>assets/images/</code> and replace the sample
+            filenames in <code>gallery.json</code>.
+        </p>
+
+        <div id="gallery-grid" class="gallery"></div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div>
+        <strong>⚔ Castle Crashers Fan Compendium</strong>
+
+        <p>
+            Unofficial fan project. Castle Crashers and its
+            characters belong to The Behemoth.
+        </p>
+    </div>
+
+
+    <div class="music">
+
+        <button id="music-toggle" aria-label="Play music">
+            ♫ Play music
+        </button>
+
+        <span id="music-status">
+            Add your audio file to enable music
+        </span>
+
+        <audio
+            id="music"
+            loop
+            preload="none"
+            src="assets/audio/theme.mp3">
+        </audio>
+
+    </div>
+
+</footer>
+
+
+<script src="config.js" defer></script>
+<script src="app-v2.js" defer></script>
+
+</body>
+</html>
