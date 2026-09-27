@@ -2,7 +2,7 @@
 
 
 /* =====================================================
-   COLORS / GLOBAL
+   GLOBAL
 ===================================================== */
 
 :root {
@@ -85,13 +85,15 @@ code {
 ===================================================== */
 
 header {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: auto;
-    padding: 20px 5%;
+    padding: 22px 4%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+
+    gap: 24px;
 }
 
 .brand {
@@ -119,13 +121,15 @@ header {
 
 nav {
     display: flex;
-    gap: 28px;
+    gap: 25px;
+    align-items: center;
 }
 
 nav a {
     text-decoration: none;
     color: var(--muted);
     font-size: 14px;
+    white-space: nowrap;
 }
 
 nav a:hover {
@@ -134,54 +138,83 @@ nav a:hover {
 
 
 /* =====================================================
-   TOP MUSIC PLAYER
+   LARGE MUSIC PLAYER
 ===================================================== */
 
 .top-music-player {
+    min-width: 500px;
+    min-height: 76px;
+
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px 10px;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 11px 15px;
 
     background: var(--panel);
+
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
 }
 
+
+/* CURRENT SONG */
+
 #music-status {
-    width: 165px;
+    width: 245px;
+
     color: var(--gold);
-    font-size: 11px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
     font-weight: 600;
+
+    line-height: 1.3;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+
+/* MUSIC BUTTON CONTAINER */
+
 .music-controls {
     display: flex;
     align-items: center;
-    gap: 5px;
+
+    gap: 8px;
 }
 
+
+/* ALL MUSIC BUTTONS */
+
 .music-controls button {
-    width: 31px;
-    height: 31px;
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
 
     padding: 0;
 
     display: grid;
     place-items: center;
 
-    background: transparent;
+    background: #111a2c;
     color: var(--ink);
 
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 9px;
 
-    font-family: inherit;
-    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+
+    line-height: 1;
 
     cursor: pointer;
 
@@ -192,42 +225,67 @@ nav a:hover {
         transform .15s ease;
 }
 
+
+/* BUTTON HOVER */
+
 .music-controls button:hover {
     background: var(--gold);
     color: #151a28;
+
     border-color: var(--gold);
-    transform: translateY(-1px);
+
+    transform: translateY(-2px);
 }
 
-/* Play button stands out */
+
+/* PLAY / PAUSE BUTTON */
 
 #music-play {
+    width: 52px;
+    height: 52px;
+
+    flex-basis: 52px;
+
     background: var(--gold);
     color: #151a28;
+
     border-color: var(--gold);
+
+    border-radius: 10px;
+
+    font-size: 21px;
 }
 
 #music-play:hover {
     background: #ffe09b;
 }
 
-/* Loop button turns gold when active */
+
+/* ACTIVE LOOP BUTTON */
 
 #music-loop.active {
     background: var(--gold);
     color: #151a28;
+
     border-color: var(--gold);
+
+    box-shadow: 0 0 0 2px rgba(255, 202, 100, .18);
 }
 
 
 /* =====================================================
-   MAIN / HERO
+   MAIN
 ===================================================== */
 
 main {
     max-width: 1300px;
     margin: auto;
 }
+
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero {
     min-height: 590px;
@@ -262,13 +320,16 @@ main {
 .hero-actions {
     display: flex;
     align-items: center;
+
     gap: 25px;
+
     margin-top: 35px;
 }
 
 .button {
     background: var(--gold);
     border: 0;
+
     color: #151a28;
 
     border-radius: 8px;
@@ -364,6 +425,7 @@ main {
 
 .ground {
     position: absolute;
+
     bottom: 0;
 
     width: 100%;
@@ -498,7 +560,7 @@ main {
 
 
 /* =====================================================
-   GENERAL SECTIONS
+   SECTIONS
 ===================================================== */
 
 .section {
@@ -595,7 +657,7 @@ textarea:focus {
 
 
 /* =====================================================
-   FACT CARDS
+   CARDS
 ===================================================== */
 
 .cards {
@@ -648,8 +710,7 @@ textarea:focus {
 .ask-section {
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 8%;
 
@@ -660,7 +721,6 @@ textarea:focus {
 
 .prompts {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 8px;
@@ -678,7 +738,6 @@ textarea:focus {
     padding: 26px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: flex-start;
@@ -817,30 +876,39 @@ footer p {
 
 
 /* =====================================================
-   TABLET
+   TABLET / SMALL LAPTOP
 ===================================================== */
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
 
     header {
         flex-wrap: wrap;
+    }
+
+    .brand {
+        flex: 1;
     }
 
     .top-music-player {
         order: 3;
 
         width: 100%;
+        min-width: 0;
 
         justify-content: space-between;
     }
 
     #music-status {
         width: auto;
-        max-width: none;
+        flex: 1;
     }
 
 }
 
+
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media (max-width: 850px) {
 
@@ -903,23 +971,60 @@ footer p {
         flex-wrap: wrap;
     }
 
+
+    /* Large but phone-friendly music player */
+
     .top-music-player {
+        width: 100%;
+
+        min-width: 0;
+        min-height: 0;
+
         flex-direction: column;
 
         justify-content: center;
 
         text-align: center;
 
-        gap: 8px;
+        padding: 14px;
+
+        gap: 12px;
     }
 
     #music-status {
         width: 100%;
+
+        font-size: 15px;
+
+        text-align: center;
     }
 
     .music-controls {
+        width: 100%;
+
         justify-content: center;
+
+        gap: 10px;
     }
+
+    .music-controls button {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+
+        font-size: 19px;
+    }
+
+    #music-play {
+        width: 54px;
+        height: 54px;
+
+        flex-basis: 54px;
+
+        font-size: 22px;
+    }
+
 
     .hero {
         padding-top: 20px;
