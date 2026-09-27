@@ -185,24 +185,51 @@ async function answer() {
   if (!question) return;
 
   const button = $('#ask-button');
+  const answerBox = $('#answer');
+  const mode = $('#answer-mode');
 
   button.disabled = true;
-  $('#answer').textContent = 'Checking the fact sheet…';
+  answerBox.textContent = 'Searching the archive…';
 
   const matches = matchFacts(question);
 
   try {
 
-    if (!window.COMPENDIUM_API_URL) {
-      showFacts(matches);
+    /* -----------------------------------------------
+       USE REVIEWED FACT SHEET FIRST
+    ------------------------------------------------ */
+
+    if (matches.length) {
+      mode.textContent = 'Archive answer · reviewed facts';
+
+      showFacts(
+        matches,
+        'From the reviewed Castle Crashers archive:'
+      );
+
       return;
     }
+
+
+    /* -----------------------------------------------
+       NO FACT MATCH — ASK GEMINI
+    ------------------------------------------------ */
+
+    if (!window.COMPENDIUM_API_URL) {
+      mode.textContent = 'Fact sheet mode';
+      showFacts([]);
+      return;
+    }
+
+    mode.textContent = 'AI is researching an answer…';
+    answerBox.textContent =
+      'Nothing matched the reviewed archive. Asking AI…';
 
     const controller = new AbortController();
 
     const timer = setTimeout(
       () => controller.abort(),
-      12000
+      20000
     );
 
     let response;
@@ -218,7 +245,9 @@ async function answer() {
             'Content-Type': 'application/json'
           },
 
-          body: JSON.stringify({ question }),
+          body: JSON.stringify({
+            question: question
+          }),
 
           signal: controller.signal
         }
@@ -228,76 +257,61 @@ async function answer() {
       clearTimeout(timer);
     }
 
-    if (!response.ok) {
-      throw Error('Service unavailable');
-    }
-
     const result = await response.json();
 
-    if (!result.grounded) {
-      showFacts([]);
-      return;
+    if (!response.ok) {
+      throw new Error(
+        result.error || 'AI service unavailable'
+      );
     }
-
-    const permitted = new Map(
-      matches.map(fact => [fact.id, fact])
-    );
-
-    const cited = (result.sources || [])
-      .map(source => permitted.get(source.id))
-      .filter(Boolean);
 
     if (
-      !cited.length ||
+      !result.answer ||
       typeof result.answer !== 'string'
     ) {
-      throw Error('Missing citations');
+      throw new Error('AI returned no answer');
     }
 
-    const box = $('#answer');
 
-    box.replaceChildren();
+    /* -----------------------------------------------
+       DISPLAY GEMINI ANSWER
+    ------------------------------------------------ */
+
+    answerBox.replaceChildren();
 
     const heading = document.createElement('strong');
 
     heading.textContent =
-      'AI response based on reviewed facts:';
+      'AI answer beyond the reviewed archive:';
 
     const body = document.createElement('p');
 
     body.textContent = result.answer;
 
-    const list = document.createElement('ul');
+    const notice = document.createElement('small');
 
-    for (const fact of cited) {
+    notice.textContent =
+      'AI-generated response. Information may not have been independently verified.';
 
-      const item = document.createElement('li');
-
-      const link = document.createElement('a');
-
-      link.href = fact.source;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-
-      link.textContent =
-        fact.title + ' · source ↗';
-
-      item.append(link);
-      list.append(item);
-    }
-
-    box.append(
+    answerBox.append(
       heading,
       body,
-      list
+      notice
     );
 
-  } catch {
+    mode.textContent =
+      'AI assisted · outside the reviewed fact sheet';
 
-    showFacts(
-      matches,
-      'AI service unavailable. Showing reviewed facts instead:'
-    );
+
+  } catch (error) {
+
+    console.error(error);
+
+    answerBox.textContent =
+      'The AI service could not answer right now. Please try again.';
+
+    mode.textContent =
+      'AI temporarily unavailable';
 
   } finally {
 
