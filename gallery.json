@@ -1,1 +1,14 @@
-[{"file":"assets/images/screenshot-1.jpg","caption":"Castle Crashers screenshot 1"},{"file":"assets/images/screenshot-2.jpg","caption":"Castle Crashers screenshot 2"},{"file":"assets/images/screenshot-3.jpg","caption":"Castle Crashers screenshot 3"}]
+[
+  {
+    "file": "castle-crashers-gif-1.gif",
+    "caption": "Castle Crashers gameplay"
+  },
+  {
+    "file": "castle-crashers-gif-2.gif",
+    "caption": "Castle Crashers adventure"
+  },
+  {
+    "file": "castle-crashers-gif-3.gif",
+    "caption": "Castle Crashers dance"
+  }
+]
