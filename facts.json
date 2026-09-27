@@ -1,0 +1,393 @@
+[
+  {
+    "id": "coop",
+    "category": "Gameplay",
+    "title": "Play with friends",
+    "fact": "Castle Crashers Remastered supports up to four players, locally or online.",
+    "keywords": [
+      "multiplayer",
+      "co-op",
+      "friends",
+      "players",
+      "local",
+      "online"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "roster",
+    "category": "Characters",
+    "title": "Playable roster",
+    "fact": "The official Castle Crashers game page describes a roster of more than 25 characters.",
+    "keywords": [
+      "characters",
+      "knights",
+      "roster",
+      "how many"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "weapons",
+    "category": "Equipment",
+    "title": "Weapons",
+    "fact": "The official game page says there are more than 40 weapons.",
+    "keywords": [
+      "weapons",
+      "swords",
+      "equipment",
+      "how many"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "stats",
+    "category": "Gameplay",
+    "title": "Character progression",
+    "fact": "Players can level up and allocate points to Strength, Magic, Defense, and Agility.",
+    "keywords": [
+      "level",
+      "level up",
+      "stats",
+      "strength",
+      "magic",
+      "defense",
+      "agility"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "orbs",
+    "category": "Companions",
+    "title": "Animal Orbs",
+    "fact": "Animal Orbs accompany players and provide different abilities.",
+    "keywords": [
+      "animal",
+      "orbs",
+      "pets",
+      "companions",
+      "abilities"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "arena",
+    "category": "Modes",
+    "title": "Arena mode",
+    "fact": "Arena mode lets players battle one another in free-for-all or team matches.",
+    "keywords": [
+      "arena",
+      "versus",
+      "pvp",
+      "team",
+      "battle"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "barbarian",
+    "category": "Modes",
+    "title": "Back Off Barbarian",
+    "fact": "Back Off Barbarian is a minigame in Castle Crashers Remastered where players avoid enemies by jumping and hopping across the level.",
+    "keywords": [
+      "back off barbarian",
+      "minigame",
+      "mini game"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "insane",
+    "category": "Modes",
+    "title": "Insane Mode",
+    "fact": "Insane Mode is an extra challenging version of the campaign.",
+    "keywords": [
+      "insane mode",
+      "difficulty",
+      "hard",
+      "campaign"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "remaster",
+    "category": "Versions",
+    "title": "Remastered edition",
+    "fact": "The Behemoth says Castle Crashers Remastered runs at 60 FPS and 1080p on Xbox One, compared with 30 FPS and 720p for the Xbox 360 edition.",
+    "keywords": [
+      "remastered",
+      "fps",
+      "resolution",
+      "xbox",
+      "difference"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "painter",
+    "category": "Versions",
+    "title": "Painter Boss Paradise",
+    "fact": "The Painter Boss Paradise DLC released on Steam in August 2025 and introduced Paint Junior, updated character and weapon artwork, and custom character creation.",
+    "keywords": [
+      "painter",
+      "paint junior",
+      "dlc",
+      "custom character",
+      "steam"
+    ],
+    "source": "https://blog.thebehemoth.com/2025/08/06/castle-crashers-painter-boss-paradise-is-now-available-on-steam/"
+  },
+  {
+    "id": "king",
+    "category": "Characters",
+    "title": "The King",
+    "fact": "The King Pack introduced the King as a playable character and gave him healing magic that can heal himself or other players.",
+    "keywords": [
+      "king",
+      "healing",
+      "heal",
+      "king pack"
+    ],
+    "source": "https://blog.thebehemoth.com/2009/01/13/the-king-pack/"
+  },
+  {
+    "id": "strength",
+    "category": "Gameplay",
+    "title": "Strength stat",
+    "fact": "Strength is one of the four attributes players can increase when leveling up.",
+    "keywords": [
+      "strength",
+      "stat",
+      "level up"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "magic",
+    "category": "Gameplay",
+    "title": "Magic stat",
+    "fact": "Magic is one of the four attributes players can increase when leveling up.",
+    "keywords": [
+      "magic",
+      "stat",
+      "level up"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "defense",
+    "category": "Gameplay",
+    "title": "Defense stat",
+    "fact": "Defense is one of the four attributes players can increase when leveling up.",
+    "keywords": [
+      "defense",
+      "stat",
+      "level up"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "agility",
+    "category": "Gameplay",
+    "title": "Agility stat",
+    "fact": "Agility is one of the four attributes players can increase when leveling up.",
+    "keywords": [
+      "agility",
+      "stat",
+      "level up"
+    ],
+    "source": "https://www.castlecrashers.com/game/"
+  },
+  {
+    "id": "king-rem",
+    "category": "Characters",
+    "title": "King in Remastered",
+    "fact": "The King is listed by The Behemoth among the special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "king",
+      "unlock",
+      "remastered"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "gray",
+    "category": "Characters",
+    "title": "Open Faced Gray Knight",
+    "fact": "Open Faced Gray Knight is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "gray knight",
+      "open faced",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "necro",
+    "category": "Characters",
+    "title": "Necromancer",
+    "fact": "Necromancer is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "necromancer",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "cult",
+    "category": "Characters",
+    "title": "Cult Minion",
+    "fact": "Cult Minion is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "cult minion",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "blacksmith",
+    "category": "Characters",
+    "title": "Blacksmith",
+    "fact": "Blacksmith is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "blacksmith",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "pink",
+    "category": "Characters",
+    "title": "Pink Knight",
+    "fact": "Pink Knight is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "pink knight",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "alien",
+    "category": "Characters",
+    "title": "Alien Hominid",
+    "fact": "Alien Hominid is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "alien hominid",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "hatty",
+    "category": "Characters",
+    "title": "Hatty Hattington",
+    "fact": "Hatty Hattington is listed among special characters unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "hatty hattington",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "pelter",
+    "category": "Companions",
+    "title": "Pelter",
+    "fact": "Pelter is listed among special Animal Orbs unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "pelter",
+      "animal orb",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "dragonhead",
+    "category": "Companions",
+    "title": "Dragonhead",
+    "fact": "Dragonhead is listed among special Animal Orbs unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "dragonhead",
+      "animal orb",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "whale",
+    "category": "Companions",
+    "title": "Golden Whale",
+    "fact": "Golden Whale is listed among special Animal Orbs unlockable for free in Castle Crashers Remastered.",
+    "keywords": [
+      "golden whale",
+      "animal orb",
+      "unlock"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "classic",
+    "category": "Versions",
+    "title": "Classic content in Remastered",
+    "fact": "The Behemoth says Castle Crashers Remastered retains the classic story, levels, arenas, and characters.",
+    "keywords": [
+      "classic",
+      "story",
+      "levels",
+      "remastered"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "quaff",
+    "category": "Modes",
+    "title": "All You Can Quaff",
+    "fact": "The Xbox 360 edition included the All You Can Quaff minigame; the Xbox One Remastered comparison lists Back Off Barbarian instead.",
+    "keywords": [
+      "all you can quaff",
+      "minigame",
+      "xbox 360"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/205820969-What-s-makes-Castle-Crashers-Remastered-different-from-Castle-Crashers"
+  },
+  {
+    "id": "paint-release",
+    "category": "Versions",
+    "title": "Painter Boss Paradise release",
+    "fact": "The Painter Boss Paradise DLC released on August 6, 2025. The Behemoth says it is available on Steam because sharing creations relies on Steam Workshop.",
+    "keywords": [
+      "painter boss paradise",
+      "release",
+      "platform",
+      "steam",
+      "workshop"
+    ],
+    "source": "https://support.thebehemoth.com/hc/en-us/articles/38060897509012-When-did-the-DLC-release-What-platforms-is-it-available-on"
+  },
+  {
+    "id": "paint-custom",
+    "category": "Versions",
+    "title": "Custom character creation",
+    "fact": "Painter Boss Paradise adds custom character capabilities that let players create their own characters.",
+    "keywords": [
+      "custom",
+      "character",
+      "painter",
+      "create"
+    ],
+    "source": "https://blog.thebehemoth.com/2025/08/06/castle-crashers-painter-boss-paradise-is-now-available-on-steam/"
+  },
+  {
+    "id": "paint-art",
+    "category": "Versions",
+    "title": "Updated artwork",
+    "fact": "Painter Boss Paradise includes updated artwork for playable characters and weapons, plus new map and main menu art.",
+    "keywords": [
+      "art",
+      "artwork",
+      "map",
+      "menu",
+      "painter"
+    ],
+    "source": "https://blog.thebehemoth.com/2025/08/06/castle-crashers-painter-boss-paradise-is-now-available-on-steam/"
+  }
+]
