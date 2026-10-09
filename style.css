@@ -1049,3 +1049,96 @@ footer p {
     }
 
 }
+
+
+/* =====================================================
+   CASTLE CRASHERS KNIGHT HOVER GLOW
+   Added styling only — existing CSS remains unchanged
+===================================================== */
+
+/* Smooth lift and glow animation */
+.card,
+.gallery figure,
+.ask-box,
+.top-music-player {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* RED KNIGHT */
+.card:nth-child(4n + 1):hover,
+.gallery figure:nth-child(4n + 1):hover {
+    transform: translateY(-8px);
+    border-color: #df5560;
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, .30),
+        0 0 12px rgba(223, 85, 96, .65),
+        0 0 28px rgba(223, 85, 96, .35);
+}
+
+
+/* BLUE KNIGHT */
+.card:nth-child(4n + 2):hover,
+.gallery figure:nth-child(4n + 2):hover {
+    transform: translateY(-8px);
+    border-color: #4b9ade;
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, .30),
+        0 0 12px rgba(75, 154, 222, .65),
+        0 0 28px rgba(75, 154, 222, .35);
+}
+
+
+/* GREEN KNIGHT */
+.card:nth-child(4n + 3):hover,
+.gallery figure:nth-child(4n + 3):hover {
+    transform: translateY(-8px);
+    border-color: #72b98b;
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, .30),
+        0 0 12px rgba(114, 185, 139, .65),
+        0 0 28px rgba(114, 185, 139, .35);
+}
+
+
+/* ORANGE KNIGHT */
+.card:nth-child(4n + 4):hover,
+.gallery figure:nth-child(4n + 4):hover {
+    transform: translateY(-8px);
+    border-color: #f5aa48;
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, .30),
+        0 0 12px rgba(245, 170, 72, .65),
+        0 0 28px rgba(245, 170, 72, .35);
+}
+
+
+/* ASK THE ARCHIVE BOX — ALL FOUR KNIGHTS */
+.ask-box:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        -8px -5px 22px rgba(223, 85, 96, .40),
+         8px -5px 22px rgba(75, 154, 222, .40),
+        -8px  7px 22px rgba(114, 185, 139, .40),
+         8px  7px 22px rgba(245, 170, 72, .40);
+}
+
+
+/* MUSIC PLAYER — ALL FOUR KNIGHTS */
+.top-music-player:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        -8px -5px 20px rgba(223, 85, 96, .35),
+         8px -5px 20px rgba(75, 154, 222, .35),
+        -8px  6px 20px rgba(114, 185, 139, .35),
+         8px  6px 20px rgba(245, 170, 72, .35);
+}
