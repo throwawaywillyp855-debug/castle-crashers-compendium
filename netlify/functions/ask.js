@@ -30,14 +30,14 @@ exports.handler = async (event) => {
   try {
 
     // Get OpenAI API key from Netlify
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = process.env.OPEN_AI_KEY;
 
     if (!apiKey) {
       return {
         statusCode: 500,
         headers,
         body: JSON.stringify({
-          error: "OPENAI_API_KEY is not configured in Netlify."
+          error: "OPEN_AI_KEY is not configured in Netlify."
         })
       };
     }
@@ -91,7 +91,7 @@ exports.handler = async (event) => {
     // Read OpenAI response
     const data = await response.json();
 
-    // Show the actual OpenAI error for troubleshooting
+    // Show actual OpenAI errors for troubleshooting
     if (!response.ok) {
 
       const openAIError =
@@ -113,7 +113,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // Extract generated text
+    // Extract generated text from OpenAI response
     const answer = (data.output || [])
       .flatMap(item => item.content || [])
       .filter(part => part.type === "output_text")
@@ -121,6 +121,7 @@ exports.handler = async (event) => {
       .join("\n")
       .trim();
 
+    // Make sure OpenAI actually returned an answer
     if (!answer) {
       return {
         statusCode: 500,
@@ -131,7 +132,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // Send answer back to the Castle Crashers website
+    // Send OpenAI answer back to website
     return {
       statusCode: 200,
       headers,
