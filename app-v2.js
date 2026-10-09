@@ -37,7 +37,11 @@ function matchFacts(question) {
         if (fact.category.toLowerCase() === term) score += 2;
       }
 
-      if (question.toLowerCase().includes(fact.title.toLowerCase())) {
+      if (
+        question
+          .toLowerCase()
+          .includes(fact.title.toLowerCase())
+      ) {
         score += 8;
       }
 
@@ -110,11 +114,17 @@ function renderFilters() {
 
   container.replaceChildren();
 
-  for (const name of ['All', ...new Set(facts.map(fact => fact.category))]) {
+  for (
+    const name of [
+      'All',
+      ...new Set(facts.map(fact => fact.category))
+    ]
+  ) {
     const button = document.createElement('button');
 
     button.textContent = name;
-    button.className = name === category ? 'active' : '';
+    button.className =
+      name === category ? 'active' : '';
 
     button.setAttribute(
       'aria-pressed',
@@ -136,7 +146,10 @@ function renderFilters() {
    FACT ANSWERS
 ===================================================== */
 
-function showFacts(matches, prefix = 'From the reviewed fact sheet:') {
+function showFacts(
+  matches,
+  prefix = 'From the reviewed fact sheet:'
+) {
   const box = $('#answer');
 
   box.replaceChildren();
@@ -145,6 +158,7 @@ function showFacts(matches, prefix = 'From the reviewed fact sheet:') {
     box.textContent =
       'I could not verify an answer from the current fact sheet. ' +
       'Try a different question or check the source entries.';
+
     return;
   }
 
@@ -165,7 +179,8 @@ function showFacts(matches, prefix = 'From the reviewed fact sheet:') {
     link.href = fact.source;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.textContent = `[Source: ${fact.title}]`;
+    link.textContent =
+      `[Source: ${fact.title}]`;
 
     item.append(link);
     list.append(item);
@@ -180,18 +195,27 @@ function showFacts(matches, prefix = 'From the reviewed fact sheet:') {
 ===================================================== */
 
 async function answer() {
-  const question = $('#question').value.trim();
+  const question =
+    $('#question').value.trim();
 
   if (!question) return;
 
-  const button = $('#ask-button');
-  const answerBox = $('#answer');
-  const mode = $('#answer-mode');
+  const button =
+    $('#ask-button');
+
+  const answerBox =
+    $('#answer');
+
+  const mode =
+    $('#answer-mode');
 
   button.disabled = true;
-  answerBox.textContent = 'Searching the archive…';
 
-  const matches = matchFacts(question);
+  answerBox.textContent =
+    'Searching the archive…';
+
+  const matches =
+    matchFacts(question);
 
   try {
 
@@ -200,7 +224,8 @@ async function answer() {
     ------------------------------------------------ */
 
     if (matches.length) {
-      mode.textContent = 'Archive answer · reviewed facts';
+      mode.textContent =
+        'Archive answer · reviewed facts';
 
       showFacts(
         matches,
@@ -212,25 +237,34 @@ async function answer() {
 
 
     /* -----------------------------------------------
-       NO FACT MATCH — ASK GEMINI
+       NO FACT MATCH — ASK OPENAI
     ------------------------------------------------ */
 
     if (!window.COMPENDIUM_API_URL) {
-      mode.textContent = 'Fact sheet mode';
-      showFacts([]);
-      return;
+      throw new Error(
+        'The AI backend URL is not configured.'
+      );
     }
 
-    mode.textContent = 'AI is researching an answer…';
+    mode.textContent =
+      'OpenAI is researching an answer…';
+
     answerBox.textContent =
-      'Nothing matched the reviewed archive. Asking AI…';
+      'Nothing matched the reviewed archive. Asking OpenAI…';
 
-    const controller = new AbortController();
 
-    const timer = setTimeout(
-      () => controller.abort(),
-      20000
-    );
+    /* -----------------------------------------------
+       SEND QUESTION TO BACKEND
+    ------------------------------------------------ */
+
+    const controller =
+      new AbortController();
+
+    const timer =
+      setTimeout(
+        () => controller.abort(),
+        20000
+      );
 
     let response;
 
@@ -242,7 +276,8 @@ async function answer() {
           method: 'POST',
 
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type':
+              'application/json'
           },
 
           body: JSON.stringify({
@@ -254,41 +289,83 @@ async function answer() {
       );
 
     } finally {
+
       clearTimeout(timer);
+
     }
 
-    const result = await response.json();
+
+    /* -----------------------------------------------
+       READ BACKEND RESPONSE
+    ------------------------------------------------ */
+
+    let result;
+
+    try {
+
+      result =
+        await response.json();
+
+    } catch {
+
+      throw new Error(
+        `Backend returned HTTP ${response.status} ` +
+        'without a valid JSON response.'
+      );
+
+    }
+
+
+    /* -----------------------------------------------
+       SHOW ACTUAL BACKEND / OPENAI ERROR
+    ------------------------------------------------ */
 
     if (!response.ok) {
+
       throw new Error(
-        result.error || 'AI service unavailable'
+        result.error ||
+        `Backend returned HTTP ${response.status}`
       );
+
     }
+
+
+    /* -----------------------------------------------
+       VERIFY OPENAI ANSWER
+    ------------------------------------------------ */
 
     if (
       !result.answer ||
       typeof result.answer !== 'string'
     ) {
-      throw new Error('AI returned no answer');
+
+      throw new Error(
+        'OpenAI returned no answer.'
+      );
+
     }
 
 
     /* -----------------------------------------------
-       DISPLAY GEMINI ANSWER
+       DISPLAY OPENAI ANSWER
     ------------------------------------------------ */
 
     answerBox.replaceChildren();
 
-    const heading = document.createElement('strong');
+    const heading =
+      document.createElement('strong');
 
     heading.textContent =
-      'AI answer beyond the reviewed archive:';
+      'OpenAI answer beyond the reviewed archive:';
 
-    const body = document.createElement('p');
+    const body =
+      document.createElement('p');
 
-    body.textContent = result.answer;
+    body.textContent =
+      result.answer;
 
-    const notice = document.createElement('small');
+    const notice =
+      document.createElement('small');
 
     notice.textContent =
       'AI-generated response. Information may not have been independently verified.';
@@ -300,18 +377,31 @@ async function answer() {
     );
 
     mode.textContent =
-      'AI assisted · outside the reviewed fact sheet';
+      'OpenAI assisted · outside the reviewed fact sheet';
 
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      'Ask the Archive error:',
+      error
+    );
 
-    answerBox.textContent =
-      'The AI service could not answer right now. Please try again.';
+    if (error.name === 'AbortError') {
+
+      answerBox.textContent =
+        'AI error: The request timed out after 20 seconds.';
+
+    } else {
+
+      answerBox.textContent =
+        `AI error: ${error.message}`;
+
+    }
 
     mode.textContent =
-      'AI temporarily unavailable';
+      'AI connection error';
+
 
   } finally {
 
@@ -370,9 +460,14 @@ async function load() {
       const img =
         document.createElement('img');
 
-      img.src = item.file;
-      img.alt = item.caption;
-      img.loading = 'lazy';
+      img.src =
+        item.file;
+
+      img.alt =
+        item.caption;
+
+      img.loading =
+        'lazy';
 
       img.onerror = () => {
 
@@ -386,7 +481,9 @@ async function load() {
           'Add an authorized image: ' +
           item.file;
 
-        img.replaceWith(missing);
+        img.replaceWith(
+          missing
+        );
 
       };
 
@@ -541,7 +638,8 @@ const musicStatus =
 
 function loadTrack(index) {
 
-  currentTrack = index;
+  currentTrack =
+    index;
 
   music.src =
     playlist[currentTrack].file;
@@ -608,7 +706,9 @@ function nextTrack() {
 
   }
 
-  loadTrack(currentTrack);
+  loadTrack(
+    currentTrack
+  );
 
   playMusic();
 
@@ -647,7 +747,9 @@ function previousTrack() {
 
   }
 
-  loadTrack(currentTrack);
+  loadTrack(
+    currentTrack
+  );
 
   playMusic();
 
@@ -854,7 +956,7 @@ window.addEventListener(
 if (window.COMPENDIUM_API_URL) {
 
   $('#answer-mode').textContent =
-    'AI assisted · grounded in reviewed facts';
+    'OpenAI assisted · grounded in reviewed facts';
 
 }
 
