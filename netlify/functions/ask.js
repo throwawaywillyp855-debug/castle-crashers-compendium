@@ -7,7 +7,7 @@ const headers = {
 
 exports.handler = async (event) => {
 
-  // Handle browser security checks
+  // Handle CORS preflight requests
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 204,
@@ -16,6 +16,7 @@ exports.handler = async (event) => {
     };
   }
 
+  // Only allow POST requests
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -27,12 +28,21 @@ exports.handler = async (event) => {
   }
 
   try {
+
+    // Get OpenAI API key from Netlify
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
-      throw new Error("OpenAI API key is not configured");
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          error: "OPENAI_API_KEY is not configured in Netlify."
+        })
+      };
     }
 
+    // Read question from website
     const { question } = JSON.parse(event.body || "{}");
 
     if (
@@ -49,6 +59,7 @@ exports.handler = async (event) => {
       };
     }
 
+    // Send question to OpenAI
     const response = await fetch(
       "https://api.openai.com/v1/responses",
       {
@@ -77,24 +88,32 @@ exports.handler = async (event) => {
       }
     );
 
+    // Read OpenAI response
     const data = await response.json();
 
+    // Show the actual OpenAI error for troubleshooting
     if (!response.ok) {
+
+      const openAIError =
+        data?.error?.message ||
+        `OpenAI returned HTTP ${response.status}`;
+
       console.error(
         "OpenAI API error:",
         response.status,
-        data.error?.message
+        openAIError
       );
 
       return {
-        statusCode: 502,
+        statusCode: response.status,
         headers,
         body: JSON.stringify({
-          error: "The AI service could not complete the request."
+          error: `OpenAI error ${response.status}: ${openAIError}`
         })
       };
     }
 
+    // Extract generated text
     const answer = (data.output || [])
       .flatMap(item => item.content || [])
       .filter(part => part.type === "output_text")
@@ -103,26 +122,36 @@ exports.handler = async (event) => {
       .trim();
 
     if (!answer) {
-      throw new Error("OpenAI returned an empty answer");
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          error: "OpenAI returned an empty answer."
+        })
+      };
     }
 
+    // Send answer back to the Castle Crashers website
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        answer
+        answer: answer
       })
     };
 
   } catch (error) {
 
-    console.error("Function error:", error.message);
+    console.error(
+      "Function error:",
+      error.message
+    );
 
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: "Unable to generate an answer right now."
+        error: `Function error: ${error.message}`
       })
     };
   }
