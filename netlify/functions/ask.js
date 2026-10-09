@@ -1,151 +1,129 @@
-exports.handler = async function (event) {
-    const headers = {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Content-Type": "application/json"
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Content-Type": "application/json"
+};
+
+exports.handler = async (event) => {
+
+  // Handle browser security checks
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers,
+      body: ""
+    };
+  }
+
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({
+        error: "Method not allowed"
+      })
+    };
+  }
+
+  try {
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      throw new Error("OpenAI API key is not configured");
+    }
+
+    const { question } = JSON.parse(event.body || "{}");
+
+    if (
+      typeof question !== "string" ||
+      !question.trim() ||
+      question.length > 1000
+    ) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({
+          error: "Please provide a valid question."
+        })
+      };
+    }
+
+    const response = await fetch(
+      "https://api.openai.com/v1/responses",
+      {
+        method: "POST",
+
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          model: "gpt-4.1-mini",
+
+          instructions:
+            "You are a knowledgeable Castle Crashers game assistant. " +
+            "Answer questions about Castle Crashers, including characters, " +
+            "weapons, Animal Orbs, levels, bosses, gameplay mechanics, " +
+            "strategies, and game history. " +
+            "Provide accurate, concise, helpful answers. " +
+            "If you are uncertain, say so rather than inventing information.",
+
+          input: question.trim(),
+
+          max_output_tokens: 500
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error(
+        "OpenAI API error:",
+        response.status,
+        data.error?.message
+      );
+
+      return {
+        statusCode: 502,
+        headers,
+        body: JSON.stringify({
+          error: "The AI service could not complete the request."
+        })
+      };
+    }
+
+    const answer = (data.output || [])
+      .flatMap(item => item.content || [])
+      .filter(part => part.type === "output_text")
+      .map(part => part.text)
+      .join("\n")
+      .trim();
+
+    if (!answer) {
+      throw new Error("OpenAI returned an empty answer");
+    }
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        answer
+      })
     };
 
-    if (event.httpMethod === "OPTIONS") {
-        return {
-            statusCode: 204,
-            headers,
-            body: ""
-        };
-    }
+  } catch (error) {
 
-    if (event.httpMethod !== "POST") {
-        return {
-            statusCode: 405,
-            headers,
-            body: JSON.stringify({
-                error: "Method not allowed"
-            })
-        };
-    }
+    console.error("Function error:", error.message);
 
-    try {
-        const body = JSON.parse(event.body || "{}");
-        const question = String(body.question || "").trim();
-
-        if (!question) {
-            return {
-                statusCode: 400,
-                headers,
-                body: JSON.stringify({
-                    error: "Please enter a question."
-                })
-            };
-        }
-
-        if (question.length > 500) {
-            return {
-                statusCode: 400,
-                headers,
-                body: JSON.stringify({
-                    error: "Question is too long."
-                })
-            };
-        }
-
-        const apiKey = process.env.GEMINI_API_KEY;
-
-        if (!apiKey) {
-            throw new Error("GEMINI_API_KEY is not configured.");
-        }
-
-        const prompt = `
-You are the AI assistant for an unofficial Castle Crashers fan compendium.
-
-Answer the user's question specifically about the video game Castle Crashers.
-
-Guidelines:
-- Give a clear and useful answer.
-- Be concise but provide enough detail to answer the question.
-- Do not invent facts.
-- If you are uncertain, clearly say what you are uncertain about.
-- Distinguish established game information from community opinions or strategies.
-- Do not pretend that you searched Reddit, the web, or another live source unless source material was actually provided to you.
-- If the question is unrelated to Castle Crashers, politely explain that this assistant is intended for Castle Crashers questions.
-
-User question:
-${question}
-        `.trim();
-
-        const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-goog-api-key": apiKey
-                },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [
-                                {
-                                    text: prompt
-                                }
-                            ]
-                        }
-                    ],
-                    generationConfig: {
-                        temperature: 0.3,
-                        maxOutputTokens: 700
-                    }
-                })
-            }
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            console.error("Gemini API error:", data);
-
-            return {
-                statusCode: response.status,
-                headers,
-                body: JSON.stringify({
-                    error: "Gemini could not answer the question."
-                })
-            };
-        }
-
-        const answer =
-            data?.candidates?.[0]?.content?.parts
-                ?.map(part => part.text || "")
-                .join("")
-                .trim();
-
-        if (!answer) {
-            return {
-                statusCode: 502,
-                headers,
-                body: JSON.stringify({
-                    error: "Gemini returned an empty response."
-                })
-            };
-        }
-
-        return {
-            statusCode: 200,
-            headers,
-            body: JSON.stringify({
-                answer: answer,
-                mode: "ai"
-            })
-        };
-
-    } catch (error) {
-        console.error(error);
-
-        return {
-            statusCode: 500,
-            headers,
-            body: JSON.stringify({
-                error: "The AI service is temporarily unavailable."
-            })
-        };
-    }
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: "Unable to generate an answer right now."
+      })
+    };
+  }
 };
