@@ -12,6 +12,12 @@
     --muted: #b7baca;
     --gold: #ffca64;
     --line: #344056;
+
+    /* Castle Crashers Knight Colors */
+    --knight-red: #df5560;
+    --knight-blue: #4b9ade;
+    --knight-green: #72b98b;
+    --knight-orange: #f5aa48;
 }
 
 * {
@@ -130,10 +136,15 @@ nav a {
     color: var(--muted);
     font-size: 14px;
     white-space: nowrap;
+
+    transition:
+        color .2s ease,
+        text-shadow .2s ease;
 }
 
 nav a:hover {
     color: var(--gold);
+    text-shadow: 0 0 12px rgba(255, 202, 100, .35);
 }
 
 
@@ -159,6 +170,27 @@ nav a:hover {
     border-radius: 14px;
 
     box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+
+    position: relative;
+    z-index: 1;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.top-music-player:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, .30),
+        -9px -5px 22px rgba(223, 85, 96, .38),
+         9px -5px 22px rgba(75, 154, 222, .38),
+        -9px  7px 22px rgba(114, 185, 139, .38),
+         9px  7px 22px rgba(245, 170, 72, .38);
 }
 
 
@@ -222,7 +254,8 @@ nav a:hover {
         background .15s ease,
         color .15s ease,
         border-color .15s ease,
-        transform .15s ease;
+        transform .15s ease,
+        box-shadow .15s ease;
 }
 
 
@@ -235,6 +268,9 @@ nav a:hover {
     border-color: var(--gold);
 
     transform: translateY(-2px);
+
+    box-shadow:
+        0 0 10px rgba(255, 202, 100, .35);
 }
 
 
@@ -269,7 +305,8 @@ nav a:hover {
 
     border-color: var(--gold);
 
-    box-shadow: 0 0 0 2px rgba(255, 202, 100, .18);
+    box-shadow:
+        0 0 0 2px rgba(255, 202, 100, .18);
 }
 
 
@@ -342,10 +379,20 @@ main {
     font-size: 15px;
 
     cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .button:hover {
     background: #ffe09b;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 20px rgba(255, 202, 100, .20);
 }
 
 .button:disabled {
@@ -508,19 +555,19 @@ main {
 }
 
 .red {
-    background: #df5560;
+    background: var(--knight-red);
 }
 
 .blue {
-    background: #4b9ade;
+    background: var(--knight-blue);
 }
 
 .orange {
-    background: #f5aa48;
+    background: var(--knight-orange);
 }
 
 .green {
-    background: #72b98b;
+    background: var(--knight-green);
 }
 
 
@@ -600,6 +647,10 @@ textarea {
     color: var(--ink);
 
     font: inherit;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 input {
@@ -614,6 +665,11 @@ textarea {
 input:focus,
 textarea:focus {
     outline: 2px solid var(--gold);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 14px rgba(255, 202, 100, .12);
 }
 
 
@@ -643,6 +699,12 @@ textarea:focus {
     padding: 9px 15px;
 
     cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
 }
 
 .filters button.active,
@@ -653,6 +715,11 @@ textarea:focus {
     color: #182033;
 
     border-color: var(--gold);
+}
+
+.filters button:hover,
+.prompts button:hover {
+    transform: translateY(-2px);
 }
 
 
@@ -679,6 +746,15 @@ textarea:focus {
     padding: 24px;
 
     min-height: 230px;
+
+    position: relative;
+
+    z-index: 1;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
 }
 
 .card .tag {
@@ -700,6 +776,90 @@ textarea:focus {
     color: var(--gold);
 
     font-size: 13px;
+}
+
+
+/* =====================================================
+   RED KNIGHT CARD
+===================================================== */
+
+.cards .card:nth-child(4n + 1):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-red);
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, .40),
+        0 0 10px rgba(223, 85, 96, .95),
+        0 0 25px rgba(223, 85, 96, .70),
+        0 0 45px rgba(223, 85, 96, .40);
+}
+
+
+/* =====================================================
+   BLUE KNIGHT CARD
+===================================================== */
+
+.cards .card:nth-child(4n + 2):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-blue);
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, .40),
+        0 0 10px rgba(75, 154, 222, .95),
+        0 0 25px rgba(75, 154, 222, .70),
+        0 0 45px rgba(75, 154, 222, .40);
+}
+
+
+/* =====================================================
+   GREEN KNIGHT CARD
+===================================================== */
+
+.cards .card:nth-child(4n + 3):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-green);
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, .40),
+        0 0 10px rgba(114, 185, 139, .95),
+        0 0 25px rgba(114, 185, 139, .70),
+        0 0 45px rgba(114, 185, 139, .40);
+}
+
+
+/* =====================================================
+   ORANGE KNIGHT CARD
+===================================================== */
+
+.cards .card:nth-child(4n + 4):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-orange);
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, .40),
+        0 0 10px rgba(245, 170, 72, .95),
+        0 0 25px rgba(245, 170, 72, .70),
+        0 0 45px rgba(245, 170, 72, .40);
 }
 
 
@@ -743,6 +903,26 @@ textarea:focus {
     align-items: flex-start;
 
     gap: 15px;
+
+    position: relative;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.ask-box:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .30),
+        -10px -7px 25px rgba(223, 85, 96, .45),
+         10px -7px 25px rgba(75, 154, 222, .45),
+        -10px  8px 25px rgba(114, 185, 139, .45),
+         10px  8px 25px rgba(245, 170, 72, .45);
 }
 
 .ask-box label {
@@ -809,6 +989,87 @@ textarea:focus {
     border-radius: 12px;
 
     overflow: hidden;
+
+    position: relative;
+
+    z-index: 1;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+
+/* RED GALLERY GLOW */
+
+.gallery figure:nth-child(4n + 1):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-red);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .35),
+        0 0 12px rgba(223, 85, 96, .90),
+        0 0 30px rgba(223, 85, 96, .55);
+}
+
+
+/* BLUE GALLERY GLOW */
+
+.gallery figure:nth-child(4n + 2):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-blue);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .35),
+        0 0 12px rgba(75, 154, 222, .90),
+        0 0 30px rgba(75, 154, 222, .55);
+}
+
+
+/* GREEN GALLERY GLOW */
+
+.gallery figure:nth-child(4n + 3):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-green);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .35),
+        0 0 12px rgba(114, 185, 139, .90),
+        0 0 30px rgba(114, 185, 139, .55);
+}
+
+
+/* ORANGE GALLERY GLOW */
+
+.gallery figure:nth-child(4n + 4):hover {
+    transform:
+        translateY(-10px)
+        scale(1.015);
+
+    z-index: 10;
+
+    border-color: var(--knight-orange);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, .35),
+        0 0 12px rgba(245, 170, 72, .90),
+        0 0 30px rgba(245, 170, 72, .55);
 }
 
 .gallery img {
@@ -1025,7 +1286,6 @@ footer p {
         font-size: 22px;
     }
 
-
     .hero {
         padding-top: 20px;
     }
@@ -1052,93 +1312,18 @@ footer p {
 
 
 /* =====================================================
-   CASTLE CRASHERS KNIGHT HOVER GLOW
-   Added styling only — existing CSS remains unchanged
+   TOUCH DEVICE SAFETY
+   Keeps hover animations from behaving strangely on
+   phones and tablets that do not have a real pointer.
 ===================================================== */
 
-/* Smooth lift and glow animation */
-.card,
-.gallery figure,
-.ask-box,
-.top-music-player {
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
+@media (hover: none) {
 
+    .card:hover,
+    .gallery figure:hover,
+    .ask-box:hover,
+    .top-music-player:hover {
+        transform: none;
+    }
 
-/* RED KNIGHT */
-.card:nth-child(4n + 1):hover,
-.gallery figure:nth-child(4n + 1):hover {
-    transform: translateY(-8px);
-    border-color: #df5560;
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, .30),
-        0 0 12px rgba(223, 85, 96, .65),
-        0 0 28px rgba(223, 85, 96, .35);
-}
-
-
-/* BLUE KNIGHT */
-.card:nth-child(4n + 2):hover,
-.gallery figure:nth-child(4n + 2):hover {
-    transform: translateY(-8px);
-    border-color: #4b9ade;
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, .30),
-        0 0 12px rgba(75, 154, 222, .65),
-        0 0 28px rgba(75, 154, 222, .35);
-}
-
-
-/* GREEN KNIGHT */
-.card:nth-child(4n + 3):hover,
-.gallery figure:nth-child(4n + 3):hover {
-    transform: translateY(-8px);
-    border-color: #72b98b;
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, .30),
-        0 0 12px rgba(114, 185, 139, .65),
-        0 0 28px rgba(114, 185, 139, .35);
-}
-
-
-/* ORANGE KNIGHT */
-.card:nth-child(4n + 4):hover,
-.gallery figure:nth-child(4n + 4):hover {
-    transform: translateY(-8px);
-    border-color: #f5aa48;
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, .30),
-        0 0 12px rgba(245, 170, 72, .65),
-        0 0 28px rgba(245, 170, 72, .35);
-}
-
-
-/* ASK THE ARCHIVE BOX — ALL FOUR KNIGHTS */
-.ask-box:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        -8px -5px 22px rgba(223, 85, 96, .40),
-         8px -5px 22px rgba(75, 154, 222, .40),
-        -8px  7px 22px rgba(114, 185, 139, .40),
-         8px  7px 22px rgba(245, 170, 72, .40);
-}
-
-
-/* MUSIC PLAYER — ALL FOUR KNIGHTS */
-.top-music-player:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        -8px -5px 20px rgba(223, 85, 96, .35),
-         8px -5px 20px rgba(75, 154, 222, .35),
-        -8px  6px 20px rgba(114, 185, 139, .35),
-         8px  6px 20px rgba(245, 170, 72, .35);
 }
