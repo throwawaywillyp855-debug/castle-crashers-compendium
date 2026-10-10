@@ -3,14 +3,35 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Castle Crashers | Fan Compendium</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1">
+
+    <meta
+        name="description"
+        content="An unofficial Castle Crashers fan compendium featuring game facts, an interactive archive, gallery, music, and fan resources.">
+
+    <title>
+        Castle Crashers | Fan Compendium
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
+
+    <!-- BRAND -->
 
     <div class="brand">
         ⚔
@@ -18,18 +39,63 @@
         <small>FAN COMPENDIUM</small>
     </div>
 
-    <nav>
-        <a href="#library">The library</a>
-        <a href="#ask">Ask the archive</a>
-        <a href="#gallery">Gallery</a>
+
+    <!-- NAVIGATION -->
+
+    <nav aria-label="Main navigation">
+
+        <!-- INTERNAL SITE LINKS -->
+
+        <a href="#library">
+            The Library
+        </a>
+
+        <a href="#ask">
+            Ask the Archive
+        </a>
+
+        <a href="#gallery">
+            Gallery
+        </a>
+
+
+        <!-- OFFICIAL / COMMUNITY LINKS -->
+
+        <a
+            href="https://www.thebehemoth.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit The Behemoth official website">
+            The Behemoth ↗
+        </a>
+
+        <a
+            href="https://www.reddit.com/r/castlecrashers/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit the Castle Crashers subreddit">
+            Reddit ↗
+        </a>
+
+        <a
+            href="https://store.thebehemoth.com/password"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit The Behemoth Store">
+            Store ↗
+        </a>
+
     </nav>
 
+
     <!-- MUSIC PLAYER -->
+
     <div class="top-music-player">
 
         <span id="music-status">
             ♫ Four Brave Champions
         </span>
+
 
         <div class="music-controls">
 
@@ -41,6 +107,7 @@
                 ⏮
             </button>
 
+
             <button
                 id="music-play"
                 type="button"
@@ -49,6 +116,7 @@
                 ▶
             </button>
 
+
             <button
                 id="music-next"
                 type="button"
@@ -56,6 +124,7 @@
                 title="Next track">
                 ⏭
             </button>
+
 
             <button
                 id="music-loop"
@@ -68,6 +137,7 @@
 
         </div>
 
+
         <audio
             id="music"
             preload="auto">
@@ -78,9 +148,18 @@
 </header>
 
 
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
 <main>
 
-    <!-- HERO SECTION -->
+
+    <!-- =================================================
+         HERO SECTION
+    ================================================== -->
+
     <section class="hero">
 
         <div class="hero-copy">
@@ -89,9 +168,11 @@
                 THE KINGDOM'S FIELD GUIDE · UNOFFICIAL FAN PROJECT
             </p>
 
+
             <h1>
                 Every knight has <em>a story.</em>
             </h1>
+
 
             <p>
                 Explore the colorful chaos of Castle Crashers.
@@ -99,13 +180,19 @@
                 and ask questions answered from a transparent fact sheet.
             </p>
 
+
             <div class="hero-actions">
 
-                <a class="button" href="#ask">
+                <a
+                    class="button"
+                    href="#ask">
                     Ask a question ↗
                 </a>
 
-                <a class="subtle" href="#library">
+
+                <a
+                    class="subtle"
+                    href="#library">
                     Explore the compendium ↓
                 </a>
 
@@ -114,7 +201,9 @@
         </div>
 
 
+
         <!-- HOME IMAGE -->
+
         <div class="hero-art hero-photo">
 
             <img
@@ -126,30 +215,49 @@
     </section>
 
 
-    <!-- STATS -->
-    <section class="stats">
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section
+        class="stats"
+        aria-label="Castle Crashers statistics">
 
         <span>
-            <b>4</b> player co-op
+            <b>4</b>
+            player co-op
         </span>
 
-        <span>
-            <b>25+</b> characters
-        </span>
 
         <span>
-            <b>40+</b> weapons
+            <b>25+</b>
+            characters
         </span>
 
+
         <span>
-            <b>1</b> very chaotic kingdom
+            <b>40+</b>
+            weapons
+        </span>
+
+
+        <span>
+            <b>1</b>
+            very chaotic kingdom
         </span>
 
     </section>
 
 
-    <!-- LIBRARY -->
-    <section id="library" class="section">
+
+    <!-- =================================================
+         LIBRARY
+    ================================================== -->
+
+    <section
+        id="library"
+        class="section">
 
         <div class="section-heading">
 
@@ -159,9 +267,11 @@
                     01 / THE LIBRARY
                 </p>
 
+
                 <h2>
                     Explore the kingdom
                 </h2>
+
 
                 <p>
                     Each entry links back to its source.
@@ -173,6 +283,7 @@
             </div>
 
 
+
             <input
                 id="search"
                 type="search"
@@ -182,11 +293,17 @@
         </div>
 
 
+
+        <!-- CATEGORY FILTERS -->
+
         <div
             id="filters"
             class="filters">
         </div>
 
+
+
+        <!-- FACT CARDS -->
 
         <div
             id="cards"
@@ -196,10 +313,17 @@
     </section>
 
 
-    <!-- ASK THE ARCHIVE -->
+
+    <!-- =================================================
+         ASK THE ARCHIVE
+    ================================================== -->
+
     <section
         id="ask"
         class="section ask-section">
+
+
+        <!-- ARCHIVE INTRODUCTION -->
 
         <div>
 
@@ -207,31 +331,42 @@
                 02 / ASK THE ARCHIVE
             </p>
 
+
             <h2>
                 Ask a question.<br>
                 <em>Get a sourced answer.</em>
             </h2>
 
+
             <p>
-                Answers are drawn from the site's fact sheet.
-                If there isn't a matching fact, the archive will
-                tell you instead of guessing.
+                Questions are checked against the site's reviewed
+                Castle Crashers fact sheet first. When the archive
+                does not contain a matching fact, OpenAI can provide
+                an additional AI-assisted response.
             </p>
 
+
+
+            <!-- EXAMPLE QUESTIONS -->
 
             <div class="prompts">
 
                 <button
+                    type="button"
                     data-question="How many players can play?">
                     How many players can play?
                 </button>
 
+
                 <button
+                    type="button"
                     data-question="What are animal orbs?">
                     What are animal orbs?
                 </button>
 
+
                 <button
+                    type="button"
                     data-question="What is Insane Mode?">
                     What is Insane Mode?
                 </button>
@@ -241,29 +376,33 @@
         </div>
 
 
+
+        <!-- QUESTION BOX -->
+
         <div class="ask-box">
 
             <label for="question">
                 YOUR QUESTION
             </label>
 
+
             <textarea
                 id="question"
                 rows="3"
                 maxlength="300"
-                placeholder="Ask about gameplay, characters, or modes…">
-            </textarea>
+                placeholder="Ask about gameplay, characters, modes, or the Castle Crashers universe…"></textarea>
 
 
             <button
                 id="ask-button"
-                class="button">
+                class="button"
+                type="button">
                 Ask the archive →
             </button>
 
 
             <small id="answer-mode">
-                Fact sheet mode
+                OpenAI assisted · grounded in reviewed facts
             </small>
 
 
@@ -273,7 +412,7 @@
                 role="status"
                 aria-live="polite">
 
-                Your answer will appear here, with links to the facts used.
+                Your answer will appear here.
 
             </div>
 
@@ -282,7 +421,11 @@
     </section>
 
 
-    <!-- GALLERY -->
+
+    <!-- =================================================
+         GALLERY
+    ================================================== -->
+
     <section
         id="gallery"
         class="section">
@@ -290,6 +433,7 @@
         <p class="eyebrow">
             03 / THE GALLERY
         </p>
+
 
         <h2>
             Scenes from the kingdom
@@ -303,10 +447,15 @@
 
     </section>
 
+
 </main>
 
 
-<!-- FOOTER -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
     <div>
@@ -314,6 +463,7 @@
         <strong>
             ⚔ Castle Crashers Fan Compendium
         </strong>
+
 
         <p>
             Unofficial fan project.
@@ -323,18 +473,59 @@
 
     </div>
 
+
+    <!-- QUICK EXTERNAL LINKS -->
+
+    <div>
+
+        <p>
+            <a
+                href="https://www.thebehemoth.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                The Behemoth ↗
+            </a>
+
+            &nbsp; · &nbsp;
+
+            <a
+                href="https://www.reddit.com/r/castlecrashers/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Castle Crashers Reddit ↗
+            </a>
+
+            &nbsp; · &nbsp;
+
+            <a
+                href="https://store.thebehemoth.com/password"
+                target="_blank"
+                rel="noopener noreferrer">
+                Official Store ↗
+            </a>
+        </p>
+
+    </div>
+
 </footer>
 
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script
     src="config.js"
     defer>
 </script>
 
+
 <script
     src="app-v2.js"
     defer>
 </script>
+
 
 </body>
 
